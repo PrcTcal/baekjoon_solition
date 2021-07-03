@@ -11,15 +11,15 @@ public class p1697 {
         line[n] = 0;
         while(!queue.isEmpty() && !queue.contains(K)){
             int cur = queue.poll();
-            if(line[cur - 1] == 0){
+            if(cur - 1 >= 0 && line[cur - 1] == 0){
                 line[cur - 1] = line[cur] + 1;
                 queue.add(cur - 1);
             }
-            if(line[cur + 1] == 0){
+            if(cur + 1 < 100001 && line[cur + 1] == 0){
                 line[cur + 1] = line[cur] + 1;
                 queue.add(cur + 1);
             }
-            if(line[cur * 2] == 0){
+            if(cur * 2 < 100001 && line[cur * 2] == 0){
                 line[cur * 2] = line[cur] + 1;
                 queue.add(cur * 2);
             }
