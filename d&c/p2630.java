@@ -39,9 +39,11 @@ public class p2630 {
         int N = Integer.parseInt(br.readLine());
         square = new int[N][N];
         blue = white = 0;
+
         for(int i = 0 ; i < N ; i++){
             square[i] = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
         }
+        
         solution(N, 0, 0);
         System.out.println(white + "\n" + blue);
     }    
