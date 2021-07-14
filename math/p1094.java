@@ -8,16 +8,20 @@ public class p1094 {
         int sum = 64;
         Stack<Integer> sticks = new Stack<>();
         sticks.push(64);
+
         while(sum != X){
             int top = sticks.pop();
             sum -= top;
             int tmp = top / 2;
+
             if(sticks.isEmpty()){
                 sum = tmp;
             } else {
                 sum += tmp;
             }
+
             sticks.push(tmp);
+            
             if(sum < X) {
                 sticks.push(tmp);
                 sum += tmp;
