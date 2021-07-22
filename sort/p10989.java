@@ -1,37 +1,68 @@
-import java.util.*;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
+import java.io.*;
 
 public class p10989{
+
+    public static void swap(int[] arr, int l, int r){
+        int temp = arr[l];
+        arr[l] = arr[r];
+        arr[r] = temp;
+    }
+
+    public static int partition(int[] arr, int left, int right){
+        int mid = (left + right) / 2;
+        swap(arr, left, mid);
+
+        int pivot = arr[left];
+        int i = left, j = right;
+
+        while(i < j){
+            while(pivot < arr[j]){
+                j--;
+            }
+
+            while(pivot >= arr[i] && i < j){
+                i++;
+            }
+            swap(arr, i, j);
+        }
+
+        arr[left] = arr[i];
+        arr[i] = pivot;
+        return i;
+    }
+
+    // 퀵소트로 하면 시간초과 발생함
+    // 입력 개수가 최대 1억이라 시간이 빡빡한 문제다.
+    public static void quickSort(int[] arr, int left, int right){
+        if(left >= right) return;
+
+        int pivot = partition(arr, left, right);
+
+        quickSort(arr, left, pivot-1);
+        quickSort(arr, pivot+1, right);
+    }
+
     public static void main(String[] args) throws IOException{
-        BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringBuilder sb = new StringBuilder();
-        int N = Integer.parseInt(buf.readLine());
-        int biggest = 0;
-        int[] arr = new int[N];
-        for(int i = 0 ; i < N ; i++){
-            arr[i] = Integer.parseInt(buf.readLine());
-            if(arr[i] > biggest) biggest = arr[i];
-        }
-        buf.close();
+        int N = Integer.parseInt(br.readLine());
+        int[] count = new int[10000];
 
-        int[] arr2 = new int[biggest+1];
         for(int i = 0 ; i < N ; i++){
-            arr2[arr[i]]++;
-        }
-        for(int i = 1 ; i <= biggest ; i++){
-            arr2[i] += arr2[i-1];
+            count[Integer.parseInt(br.readLine())]++;
         }
 
-        int[] result = new int[N];
-        for(int i = 0 ; i < N ; i++){
-            result[--arr2[arr[i]]] = arr[i];
+        for(int i = 1 ; i < 10000 ; i++){
+            while(count[i] > 0){
+                sb.append(i).append("\n");
+                count[i]--;
+            }
         }
 
-        for(int i : result){
-            sb.append(i).append('\n');
-        }
-        System.out.print(sb.toString());
+        bw.write(sb.toString());
+        bw.flush();
+        bw.close();
+        br.close();
     }
 }

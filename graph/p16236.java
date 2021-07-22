@@ -2,9 +2,9 @@ import java.util.*;
 import java.io.*;
 
 public class p16236 {
-    static int[][] graph, check;
-    static int[] dx = {0, 0, -1, 1};
-    static int[] dy = {-1, 1, 0, 0};
+    static int[][] graph, check;        // 지도와 
+    static int[] dx = {0, 0, -1, 1};    // x축 이동
+    static int[] dy = {-1, 1, 0, 0};    // y축 이동
     static int min_dist, min_x, min_y;
     static Shark shark;
     static int N;
