@@ -2,8 +2,6 @@ import java.util.*;
 import java.io.*;
 
 public class p2116 {
-    static int N;
-    static int[][] arr;
 
     public static int getSide(int b, int t){
         int max = 6;
@@ -15,8 +13,8 @@ public class p2116 {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        N = Integer.parseInt(br.readLine());
-        arr = new int[10000][6];
+        int N = Integer.parseInt(br.readLine());
+        int[][] arr = new int[10000][6];
 
         for(int i = 0 ; i < N ; i++){
             StringTokenizer st = new StringTokenizer(br.readLine(), " ");
