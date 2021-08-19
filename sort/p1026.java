@@ -8,6 +8,7 @@ public class p1026 {
         int[] A = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
         Integer[] B = new Integer[N];
         String[] tmp = br.readLine().split(" ");
+        
         for(int i = 0 ; i < N ; i++){
             B[i] = Integer.parseInt(tmp[i]);
         }
