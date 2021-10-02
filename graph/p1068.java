@@ -30,6 +30,9 @@ public class p1068 {
         tree[idx] = -2;
     }
 
+    // 고려해야할 조건
+    // 1. 삭제하는 노드가 루트 노드일때 count = 0이다
+    // 2. 둘째 줄에서 첫 노드가 루트 노드가 아닐수도 있다.(루트 노드의 번호가 0이 아닐수도 있다)
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
@@ -52,7 +55,7 @@ public class p1068 {
         }
 
         int del = Integer.parseInt(br.readLine());
-        if(del != 0){
+        if(del != root){
             for(int i = 0 ; i < list[tree[del]].size() ; i++){
                 if(list[tree[del]].get(i) == del){
                     list[tree[del]].remove(i);
