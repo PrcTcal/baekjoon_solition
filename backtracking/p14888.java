@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class p14888 {
-    static int N, min, max, tot;
+    static int N, min, max;
     static int[] arr;
     static int[] oper;
 
@@ -50,7 +50,6 @@ public class p14888 {
 
         for(int i = 0 ; i < 4 ; i++){
             int op = Integer.parseInt(st.nextToken());
-            tot += op;
             oper[i] = op;
         }
 
