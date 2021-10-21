@@ -33,32 +33,30 @@ public class p14891 {
             }
         }
 
+        // 시계방향 회전
         if (o.dir > 0) {
             lists[o.wheel].addFirst(lists[o.wheel].pollLast());
+
+        // 반시계방향 회전
         } else if(o.dir < 0) {
             lists[o.wheel].addLast(lists[o.wheel].pollFirst());
         }
     }
 
+    // 점수 계산
     public static int getScore(){
         int sum = 0;
         for(int i = 0 ; i < 4 ; i++){
-            System.out.println(lists[i].getFirst());
             sum += lists[i].getFirst() == 1 ? Math.pow(2, i) : 0;
         }
         return sum;
     }
 
-    public static void print(){
-        System.out.println("-------------------");
-        for(int i = 0 ; i < 4 ; i++){
-            for(int j = 0 ; j < lists[i].size() ; j++){
-                System.out.print(lists[i].get(j) + " ");
-            }
-            System.out.println();
-        }
-    }
-
+    // 고려해야할 조건
+    // 1. 톱니 회전 특성상 양방향 큐가 필요하되, 3번째와 7번째에 있는 숫자를 확인할 수 있어야 해서 LinkedList를 사용했다.
+    // 2. 회전하기 전 상태에서 톱니간 비교를 통해 어느 방향으로 회전할지 미리 정하기 위해 재귀를 통해 타겟 톱니에서부터 주변으로
+    //    rotate 함수를 호출하도록 했다.
+    // 3. 각 톱니에게 회전할 방향을 정해준 후에는 방향에 따라 회전시킨다.
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         lists = new LinkedList[4];
@@ -82,7 +80,6 @@ public class p14891 {
         
         for(int i = 0 ; i < K ; i++){
             rotate(o[i], o[i].wheel);
-            print();
         }
         
         System.out.println(getScore());
